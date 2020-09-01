@@ -2,7 +2,7 @@ package v1
 
 import (
 	"net/http"
-	"log"
+
 
 	"github.com/gin-gonic/gin"
 	"github.com/astaxie/beego/validation"
@@ -12,6 +12,7 @@ import (
 	"gin-blog/pkg/e"
 	"gin-blog/pkg/setting"
 	"gin-blog/pkg/util"
+	"gin-blog/pkg/logging"
 )
 
 //获取单个文章
@@ -32,7 +33,7 @@ func GetArticle(c *gin.Context){
 		}
 	} else {
 		for _, err := range valid.Errors {
-			log.Printf("err.key: %s, err.message: %s", err.Key, err.Message)
+			logging.Info("err.key: %s, err.message: %s", err.Key, err.Message)
 		}
 	}
 
@@ -74,7 +75,7 @@ func GetArticles(c *gin.Context){
 
 	} else {
 		for _, err := range valid.Errors {
-			log.Printf("err.key: %s, err.message: %s", err.Key, err.Message)
+			logging.Info("err.key: %s, err.message: %s", err.Key, err.Message)
 		}
 	}
 
@@ -121,7 +122,7 @@ func AddArticle(c *gin.Context){
 
 	} else {
 		for _, err := range valid.Errors {
-			log.Printf("err.key: %s, err.message: %s", err.Key, err.Message)
+			logging.Info("err.key: %s, err.message: %s", err.Key, err.Message)
 		}
 	}
 
@@ -186,7 +187,7 @@ func EditArticle(c *gin.Context){
         }
     } else {
         for _, err := range valid.Errors {
-            log.Printf("err.key: %s, err.message: %s", err.Key, err.Message)
+            logging.Info("err.key: %s, err.message: %s", err.Key, err.Message)
         }
     }
 
@@ -214,7 +215,7 @@ func DeleteArticle(c *gin.Context){
         }
     } else {
         for _, err := range valid.Errors {
-            log.Printf("err.key: %s, err.message: %s", err.Key, err.Message)
+            logging.Info("err.key: %s, err.message: %s", err.Key, err.Message)
         }
     }
 
